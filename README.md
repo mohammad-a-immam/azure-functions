@@ -1,6 +1,8 @@
 # Azure Functions
 My custom Azure functions hosted for achieving different purpose. These public repositories have sensative details like access keys and secrets hidden. If reusing these functions, please follow instructions to replace them with your own secrets. These are reusable code to customize and deploy own azure functions.
 
+Note: AZURE_FUCNTION_CODE (authentication) codes are intentionally hidden to prevent any unwanted invokes of the azure functions.
+
 ## NodeJS Functions
 
 
