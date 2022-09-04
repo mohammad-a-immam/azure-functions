@@ -27,28 +27,6 @@ namespace Personal_AzureFunctions
             [HttpTrigger(AuthorizationLevel.Function , "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            /*log.LogInformation("C# HTTP trigger function processed a request.");
-
-            string name = req.Query["name"];
-
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
-
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
-
-            return new OkObjectResult(responseMessage);*/
-
-
-            /*//configurations
-            const string _endpointUri = "https://mcosmos02.documents.azure.com:443/";
-            const string _primaryKey =
-                "pzhBpx3tYCnhq4l4uSrGJw6NNvZpzDNZgTi5BcHFtPVn5fCledqrQ9RQVRJP07qEN96Rd3DieTV4R1gWL6a6NQ==";
-            const string _databaseId = "portfolio";
-            const string _containerId = "mohammad-a-immam";*/
-
 
             try
             {
