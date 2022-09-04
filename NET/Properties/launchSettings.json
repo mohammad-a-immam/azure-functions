@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Personal_AzureFunctions": {
+      "commandName": "Project",
+      "launchBrowser": true
+    }
+  }
+}
