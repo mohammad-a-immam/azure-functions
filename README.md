@@ -36,10 +36,10 @@ GitHub OAuth Code Grant flow does not allow oauth authentication through front e
 
 ## .NET Functions
 
-**1. GitHub OAuth Helper**
+**1. GetDataCosmosDB**
 
 ### Directory
-/NET/PersonalAzureFunctions/index.example.html
+/NET/PersonalAzureFunctions/GetDataCosmosDB.cs
 
 ### Summary/Purpose
 This function receives a post request with parameters to retrieve and return
@@ -75,4 +75,46 @@ JSON Request Body Should contain:
         "databaseId": {cosmosdb database name},
         "containerId":{cosmosdb container name},
         "itemId": {querying item id}
+    }
+
+---
+
+**2. AddItemCosmosDbContainer**
+
+### Directory
+/NET/PersonalAzureFunctions/AddItemCosmosDbContainer.cs
+
+### Summary/Purpose
+This function receives a post request with parameters to add 
+to an azure cosmos db container.
+
+### .NET Version
+3.1
+
+### Instructions to reuse
+- Make sure you have azure functions core-tools.
+- Make sure you have azure development tools module installed for visual studio through VS Installer.
+- Open the solution with visual studio.
+- Open cosmosDb.example.config.cs and replace the placeholder `endpoint` and `primaryKey` with your azure cosmos db credentials and rename the file to `cosmosDb.config.cs`.
+- The solution should be ready for debug/publish through.
+  Note: publishing profile needs to be created through Visual Studio Publish Tool. It will prompt
+  you to connect to your azure account and select your resources.
+
+### Hosted url to invoke:
+https://mfunctions-node-01.azurewebsites.net/api/AddItemCosmosDbContainer?code=AZURE_CODE&gitcode=code`
+
+- ash***2@gmail.com
+- gitcode: github's provided code
+- code: azure's secret authentication code to allow invoking of the function
+
+[POST] https://mfunctions-net-02.azurewebsites.net/api/GetDataCosmosDB?code=AZURE_FUNCTION_CODE
+
+JSON Request Body Should contain:
+
+    {
+        "endpointUri": {cosmosdb database endpoint: backend will default to my database primary key if id is not provided},
+        "primaryKey": {cosmosdb primary key: backend will default to my database primary key if id is not provided}
+        "databaseId": {cosmosdb database name},
+        "containerId":{cosmosdb container name},
+        "item": {item object to be added to cosmos}
     }
