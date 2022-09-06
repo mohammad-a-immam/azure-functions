@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -37,8 +39,15 @@ namespace Personal_AzureFunctions
                 {
                     var database = client.GetDatabase(config.databaseId);
                     var container = database.GetContainer(config.containerId);
+                    if (config.itemId == null)
+                    {
+                        var iterator = container.GetItemQueryIterator<object>();
+                        var x = await iterator.ReadNextAsync();
+
+                        return new OkObjectResult(x.Resource);
+
+                    }
                     var data = await container.ReadItemAsync<object>(config.itemId, new PartitionKey(config.itemId));
-                    Console.WriteLine(data);
                     return new OkObjectResult(data.Resource);
                 }
             }
